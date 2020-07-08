@@ -1,0 +1,7 @@
+/other_files
+*.out
+*.gch
+*.swp
+*.o
+*.a
+*.so
