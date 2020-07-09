@@ -79,9 +79,11 @@ void	ft_putstr_pf(s_data* data);
 size_t	ft_strlen(const char* s);
 char*	ft_strchr(const char* s, int c);
 void	ft_symb_arg(int symnol, s_data* data);
-void	ft_width_set(s_data* data);
+void	ft_width_set(s_data* data, char symbol);
 void* ft_memcpy(void* dest, const void* src, size_t n);
 void	ft_string_arg(char* string, s_data* data);
+void	ft_itoa_10(long long int value, s_data* data);
+void	ft_itoa_16(unsigned long long int value, s_data* data, char* digits);
 //char    *ft_itoa(int n);
 
 #endif

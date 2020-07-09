@@ -15,17 +15,8 @@
 
 void	ft_putstr_pf(s_data *data)
 {
-	data->return_sum = data->arg_len;
+	data->return_sum += data->arg_len;
 	write(1, data->arg, data->arg_len);
-	printf ("\ndata->data->index = %d", data->index);
-	printf ("\ndata->data->minus = %d", data->minus);
-	printf ("\ndata->data->plus = %d", data->plus);
-	printf ("\ndata->ddata->zero = %d", data->zero);
-	printf ("\ndata->space = %d", data->space);
-	printf ("\ndata->octotorp = %d", data->space);
-	printf ("\ndata->width = %d", data->width);
-	printf ("\ndata->accuracy = %d", data->accuracy);
-	printf ("\ndata->type = %c", data->type);
-	printf ("\ndata->arg_len = %d", data->arg_len);
-	printf ("\ndata->return_sum = %d", data->return_sum);
+//	printf("\ndata->arg_put_str = %s", data->arg);
+//	printf("\ndata->arg_len_put_str = %d", data->arg_len);
 }

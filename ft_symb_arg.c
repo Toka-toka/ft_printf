@@ -14,27 +14,30 @@
 # include <stdlib.h>
 #include <stdio.h>
 
-void	ft_width_set(s_data *data)
+void	ft_width_set(s_data *data, char symbol)
 {
 	int i;
-
+	
 	i = data->width - data->arg_len;
 	if (i > 0 && data->minus == 0)
 	{
+		if (data->accuracy == -1 && data->zero == 1 && ft_strchr("diuxX", data->type) != 0)
+			symbol = '0';
 		while (i > 0)
 		{
-			write(1, " ", 1);
+			write(1, &symbol, 1);
 			data->return_sum++;
 			i--;
 		}
 	}
 	ft_putstr_pf(data);
 	free (data->arg);
-	if (i > 0 && data->minus == 1)
+	if (i > 0)
 	{
 		while (i > 0)
 		{
-			data->return_sum += write(1, " ", 1);
+			write(1, &symbol, 1);
+			data->return_sum ++; 
 			i--;
 		}
 	}

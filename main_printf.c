@@ -16,7 +16,8 @@
 int		main()
 {
 	int	print_symbols = 0;
-	print_symbols = ft_printf("Test = %10.3s", "abcd");
-//	printf("\nReturn value = %d\n", print_symbols);
+	print_symbols = ft_printf("%-#10.5X", 123);
+	printf("\nReturn value = %d\n", print_symbols);
+//	printf("%s", 'A');
 	return (0);
 }

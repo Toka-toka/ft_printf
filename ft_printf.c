@@ -15,26 +15,30 @@
 
 int		ft_get_arg(s_data *data)
 {
+	
 	if (data->type == '%')
 		ft_symb_arg('%', data);
 	if (data->type == 'c')
 		ft_symb_arg(va_arg(data->va, int), data);
 	if (data->type == 's')
 		ft_string_arg(va_arg(data->va, char*), data); 
-/*  if (type == 'd' || type == 'i')
-		ft_itoa(va_arg(data->va, int));
-	if (type == 'p')
-		write(1, "type p\n", 7);
-	if (type == 'u')
-		write(1, "type u\n", 7);
-	if (type == 'x')
-		write(1, "type x\n", 7);
-	if (type == 'X')
-		write(1, "type X\n", 7); */
+	if (data->type == 'u')
+		ft_itoa_10(va_arg(data->va, unsigned int), data);
+	if (data->type == 'd' || data->type == 'i')
+		ft_itoa_10(va_arg(data->va, int), data);
+	if (data->type == 'p')
+		ft_itoa_16(va_arg(data->va, unsigned long long int), data, "0123456789abcdefx");
+	if (data->type == 'x')
+		ft_itoa_16(va_arg(data->va, unsigned int), data, "0123456789abcdefx");
+	if (data->type == 'X')
+		ft_itoa_16(va_arg(data->va, unsigned int), data, "0123456789ABCDEFX");
 	if (data->error == 1) 
 		return (-1);
-	else ft_width_set(data);
-	printf ("\ndata->data->index = %d", data->index);
+	else ft_width_set(data, ' ');
+	return (0);
+}
+
+/*	printf ("\ndata->data->index = %d", data->index);
 	printf ("\ndata->data->minus = %d", data->minus);
 	printf ("\ndata->data->plus = %d", data->plus);
 	printf ("\ndata->ddata->zero = %d", data->zero);
@@ -42,12 +46,9 @@ int		ft_get_arg(s_data *data)
 	printf ("\ndata->octotorp = %d", data->space);
 	printf ("\ndata->width = %d", data->width);
 	printf ("\ndata->accuracy = %d", data->accuracy);
-	printf ("\ndata->type = %c", data->type);
 	printf ("\ndata->arg_len = %d", data->arg_len);
 	printf ("\ndata->return_sum = %d", data->return_sum);
-	printf ("\ndata->error = %d", data->error);
-	return (0);
-}
+	printf ("\ndata->error = %d", data->error); */
 
 void		struct_clear(s_data *data)
 {
@@ -65,48 +66,52 @@ void		struct_clear(s_data *data)
 }
 int		parsing (const char *s, s_data *data)
 {
-	char	*string;
-	int		index_plus;
+	int		i;
 	
 	struct_clear(data);
-	index_plus = data->index;
-	while (ft_strchr("-0# +", s[index_plus]) != 0)
+	i = data->index + 1;
+	while (ft_strchr("-0# +", s[i]) != 0)
 	{
-		if (s[index_plus] == '-')
+		if (s[i] == '-')
 			data->minus = 1;
-		if (s[index_plus] == '+')
+		if (s[i] == '+')
 			data->plus = 1;
-		if (s[index_plus] == '0')
+		if (s[i] == '0')
 			data->zero = 1;
-		if (s[index_plus] == ' ')
+		if (s[i] == ' ')
 			data->space = 1;
-		if (s[index_plus] == '#')
+		if (s[i] == '#')
 			data->octotorp = 1;
-		index_plus++;
+		i++;
 	}
-	while (ft_strchr("0123456789", s[index_plus]) != 0)
+	while (ft_strchr("0123456789", s[i]) != 0)
 	{
-		data->width = data->width * 10 + (s[index_plus] - '0');
-		index_plus++;
+		data->width = data->width * 10 + (s[i] - '0');
+		i++;
 	}
-	if (s[index_plus] == '.')
+	if (s[i] == '.')
 	{
 		data->accuracy = 0;
-		index_plus++;
-		while (ft_strchr("0123456789", s[index_plus]) != 0)
+		i++;
+		while (ft_strchr("0123456789", s[i]) != 0)
 		{
-			data->accuracy = data->accuracy * 10 + (s[index_plus] - '0');
-			index_plus++;
+			data->accuracy = data->accuracy * 10 + (s[i] - '0');
+			i++;
 		}
 	}
-	if (ft_strchr("cspdiuxX%", s[index_plus]) != 0)
+	if (ft_strchr("cspdiuxX%", s[i]) != 0)
 	{
-		data->index = index_plus + 1;
-		data->type = s[index_plus];
+		data->index = i + 1;
+		data->type = s[i];
 		if (ft_get_arg(data) == -1)
 			return (-1);
 	}
-	else write (1, "%", 1);
+	else 
+	{
+		write (1, "%", 1);
+//		data->index++;
+		data->return_sum++;
+	}
 	return (0);
 }
 
@@ -117,11 +122,12 @@ int		ft_printf(const char *s, ...)
 	data.index = 0;
 	data.return_sum = 0;
 	va_start(data.va, s);
+	if (s == NULL)
+		return (-1);
 	while (s[data.index] != '\0')
 	{
 		if (s[data.index] == '%')
 		{
-			data.index++;
 			if (parsing(s, &data) == -1)
 				return (-1);
 		}	
