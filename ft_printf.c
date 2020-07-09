@@ -109,7 +109,7 @@ int		parsing (const char *s, s_data *data)
 	else 
 	{
 		write (1, "%", 1);
-//		data->index++;
+		data->index++;
 		data->return_sum++;
 	}
 	return (0);

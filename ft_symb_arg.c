@@ -21,7 +21,7 @@ void	ft_width_set(s_data *data, char symbol)
 	i = data->width - data->arg_len;
 	if (i > 0 && data->minus == 0)
 	{
-		if (data->accuracy == -1 && data->zero == 1 && ft_strchr("diuxX", data->type) != 0)
+		if (data->accuracy == -1 && data->zero == 1 && ft_strchr("diuxX%", data->type) != 0)
 			symbol = '0';
 		while (i > 0)
 		{

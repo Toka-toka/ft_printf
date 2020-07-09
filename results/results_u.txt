@@ -1,0 +1,47 @@
+Test 360 (u_zp_pos_fits) : FAILED.
+    First line of code: {return test("%05u", 43);}
+      expected output : "00043"
+      your output     : "   43"
+      expected (nonprintable as hex) : "00043"
+      actual   (nonprintable as hex) : "   43"
+
+Test 361 (u_zp_zero_fits) : FAILED.
+    First line of code: {return test("%03u", 0);}
+      expected output : "000"
+      your output     : "  0"
+      expected (nonprintable as hex) : "000"
+      actual   (nonprintable as hex) : "  0"
+
+Test 373 (u_prec_width_ff_pos_zp) : FAILED.
+    First line of code: {return test("%08.5u", 34);}
+      expected output : "   00034"
+      your output     : "00000034"
+      expected (nonprintable as hex) : "   00034"
+      actual   (nonprintable as hex) : "00000034"
+
+Test 374 (u_prec_width_ff_zero_zp) : FAILED.
+    First line of code: {return test("%08.5u", 0);}
+      expected output : "   00000"
+      your output     : "00000000"
+      expected (nonprintable as hex) : "   00000"
+      actual   (nonprintable as hex) : "00000000"
+
+Test 375 (u_prec_width_nf_pos_zp) : FAILED.
+    First line of code: {return test("%08.3u", 8375);}
+      expected output : "    8375"
+      your output     : "00008375"
+      expected (nonprintable as hex) : "    8375"
+      actual   (nonprintable as hex) : "00008375"
+
+Test 4189 (u_neg_prec_star_01) : FAILED.
+    First line of code: {return test("%.*u", -3, 12345);}
+    Timed out
+
+Test 4190 (u_neg_prec_star_02) : FAILED.
+    First line of code: {return test("%.*u", -1, 12345);}
+    Timed out
+
+Test 4191 (u_neg_prec_star_03) : FAILED.
+    First line of code: {return test("%.*u", -1, 0);}
+    Timed out
+

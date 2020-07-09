@@ -1,0 +1,119 @@
+Test 293 (i_prec_exactfit_neg) : FAILED.
+    First line of code: {return test("%.4i", -2372);}
+      expected output : "-2372"
+      your output     : "02372"
+      expected (nonprintable as hex) : "-2372"
+      actual   (nonprintable as hex) : "02372"
+
+Test 295 (i_prec_nofit_neg) : FAILED.
+    First line of code: {return test("%.3i",-23646);}
+      expected output : "-23646"
+      your output     : "023646"
+      expected (nonprintable as hex) : "-23646"
+      actual   (nonprintable as hex) : "023646"
+
+Test 296 (i_zp_pos_fits) : FAILED.
+    First line of code: {return test("%05i", 43);}
+      expected output : "00043"
+      your output     : "   43"
+      expected (nonprintable as hex) : "00043"
+      actual   (nonprintable as hex) : "   43"
+
+Test 297 (i_zp_neg_fits) : FAILED.
+    First line of code: {return test("%07i", -54);}
+      expected output : "-000054"
+      your output     : "    -54"
+      expected (nonprintable as hex) : "-000054"
+      actual   (nonprintable as hex) : "    -54"
+
+Test 298 (i_zp_zero_fits) : FAILED.
+    First line of code: {return test("%03i", 0);}
+      expected output : "000"
+      your output     : "  0"
+      expected (nonprintable as hex) : "000"
+      actual   (nonprintable as hex) : "  0"
+
+Test 306 (i_prec_width_nofit_fit_neg) : FAILED.
+    First line of code: {return test("%8.3i", -8473);}
+      expected output : "   -8473"
+      your output     : "   08473"
+      expected (nonprintable as hex) : "   -8473"
+      actual   (nonprintable as hex) : "   08473"
+
+Test 310 (i_prec_width_nofit_nofit_neg) : FAILED.
+    First line of code: {return test("%3.3i", -8462);}
+      expected output : "-8462"
+      your output     : "08462"
+      expected (nonprintable as hex) : "-8462"
+      actual   (nonprintable as hex) : "08462"
+
+Test 315 (i_prec_width_nofit_fit_neg_lj) : FAILED.
+    First line of code: {return test("%-8.3i", -8473);}
+      expected output : "-8473   "
+      your output     : "08473   "
+      expected (nonprintable as hex) : "-8473   "
+      actual   (nonprintable as hex) : "08473   "
+
+Test 319 (i_prec_width_nofit_nofit_neg_lj) : FAILED.
+    First line of code: {return test("%-3.3i", -8462);}
+      expected output : "-8462"
+      your output     : "08462"
+      expected (nonprintable as hex) : "-8462"
+      actual   (nonprintable as hex) : "08462"
+
+Test 320 (i_prec_width_ff_pos_zp) : FAILED.
+    First line of code: {return test("%08.5i", 34);}
+      expected output : "   00034"
+      your output     : "00000034"
+      expected (nonprintable as hex) : "   00034"
+      actual   (nonprintable as hex) : "00000034"
+
+Test 321 (i_prec_width_ff_neg_zp) : FAILED.
+    First line of code: {return test("%010.5i", -216);}
+      expected output : "    -00216"
+      your output     : "0000-00216"
+      expected (nonprintable as hex) : "    -00216"
+      actual   (nonprintable as hex) : "0000-00216"
+
+Test 322 (i_prec_width_ff_zero_zp) : FAILED.
+    First line of code: {return test("%08.5i", 0);}
+      expected output : "   00000"
+      your output     : "00000000"
+      expected (nonprintable as hex) : "   00000"
+      actual   (nonprintable as hex) : "00000000"
+
+Test 323 (i_prec_width_nf_pos_zp) : FAILED.
+    First line of code: {return test("%08.3i", 8375);}
+      expected output : "    8375"
+      your output     : "00008375"
+      expected (nonprintable as hex) : "    8375"
+      actual   (nonprintable as hex) : "00008375"
+
+Test 324 (i_prec_width_nf_neg_zp) : FAILED.
+    First line of code: {return test("%08.3i", -8473);}
+      expected output : "   -8473"
+      your output     : "00008473"
+      expected (nonprintable as hex) : "   -8473"
+      actual   (nonprintable as hex) : "00008473"
+
+Test 328 (i_prec_width_nn_neg_zp) : FAILED.
+    First line of code: {return test("%03.3i", -8462);}
+      expected output : "-8462"
+      your output     : "08462"
+      expected (nonprintable as hex) : "-8462"
+      actual   (nonprintable as hex) : "08462"
+
+Test 333 (i_prec_width_nf_neg_ljzp_ignoreflag) : FAILED.
+    First line of code: {return test("%0-8.3i", -8473);}
+      expected output : "-8473   "
+      your output     : "08473   "
+      expected (nonprintable as hex) : "-8473   "
+      actual   (nonprintable as hex) : "08473   "
+
+Test 337 (i_prec_width_nn_neg_ljzp_ignoreflag) : FAILED.
+    First line of code: {return test("%0-3.3i", -8462);}
+      expected output : "-8462"
+      your output     : "08462"
+      expected (nonprintable as hex) : "-8462"
+      actual   (nonprintable as hex) : "08462"
+

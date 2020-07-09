@@ -1,0 +1,8 @@
+Test 4201 (s_neg_prec_star_01) : FAILED.
+    First line of code: {return test("%.*s", -3, 0);}
+    Timed out
+
+Test 4202 (s_neg_prec_star_02) : FAILED.
+    First line of code: {return test("%.*s", -1, 0);}
+    Timed out
+
