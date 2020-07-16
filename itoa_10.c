@@ -6,7 +6,7 @@
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 22:46:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/14 15:16:30 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/16 22:39:01 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdlib.h>
 #include "libftprintf.h"
 
-static int	accuracy_10(int long long value, s_data *data, int i, int ii)
+static int	accuracy_10(int long long value, t_data *data, int i, int ii)
 {
 	if (data->plus == 1 || data->space == 1 || value < 0)
 	{
 		i = 1;
-		if (data->accuracy == -1 && data->zero == 1)
+		if (data->zero_type == 1)
 		{
 			data->accuracy = data->width - 1;
 			data->width = 0;
@@ -43,9 +43,9 @@ static int	accuracy_10(int long long value, s_data *data, int i, int ii)
 	return (data->error);
 }
 
-void		itoa_10(long long int value, s_data *data)
+void		itoa_10(long long int value, t_data *data)
 {
-	unsigned int	new_value;
+	long long int	new_value;
 	int				i;
 
 	if (accuracy_10(value, data, 0, 0) == 0)

@@ -6,7 +6,7 @@
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 22:46:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/14 14:54:35 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/16 22:13:29 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	ft_width_set(s_data *data, char symbol)
+void	ft_width_set(t_data *data, char symbol)
 {
 	int i;
-	
+
 	i = data->width - data->arg_len;
 	if (i > 0 && data->minus == 0)
 	{
-		if (data->accuracy == -1 && data->zero == 1 && ft_strchr("diuxX%", data->type) != 0)
+		if (data->zero_type == 1)
 			symbol = '0';
 		while (i > 0)
 		{
@@ -43,7 +43,7 @@ void	ft_width_set(s_data *data, char symbol)
 	}
 }
 
-void	ft_string_arg(char *string, s_data *data)
+void	ft_string_arg(char *string, t_data *data)
 {
 	if (string == NULL)
 	{
@@ -61,7 +61,7 @@ void	ft_string_arg(char *string, s_data *data)
 		ft_memcpy(data->arg, string, data->arg_len);
 }
 
-void	ft_symb_arg(int symbol, s_data *data)
+void	ft_symb_arg(int symbol, t_data *data)
 {
 	data->arg = malloc(2 * sizeof(char));
 	if (data->arg == NULL)

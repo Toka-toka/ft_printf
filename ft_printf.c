@@ -6,14 +6,14 @@
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 22:11:50 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/14 22:11:53 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/16 23:55:39 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-void	ft_struct_clear(s_data *data)
+void	ft_struct_clear(t_data *data)
 {
 	data->minus = 0;
 	data->plus = 0;
@@ -27,11 +27,12 @@ void	ft_struct_clear(s_data *data)
 	data->arg_len = 0;
 	data->error = 0;
 	data->conversion = 0;
+	data->zero_type = 0;
 }
 
 int		ft_printf(const char *s, ...)
 {
-	s_data	data;
+	t_data	data;
 
 	data.index = 0;
 	data.return_sum = 0;
