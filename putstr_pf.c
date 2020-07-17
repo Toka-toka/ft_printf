@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   putstr_pf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/06 17:13:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/05/25 20:48:45 by sedric           ###   ########.fr       */
+/*   Created: 2020/05/13 14:00:47 by sedric            #+#    #+#             */
+/*   Updated: 2020/07/17 18:54:40 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	putstr_pf(t_data *data)
 {
-	unsigned char	*str_point;
-	unsigned char	symbol;
-
-	str_point = (unsigned char*)s;
-	symbol = c;
-	while (n > 0)
+	if (data->arg != NULL)
 	{
-		*str_point++ = symbol;
-		n--;
+		data->return_sum += data->arg_len;
+		write(1, data->arg, data->arg_len);
 	}
-	return (s);
 }

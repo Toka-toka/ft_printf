@@ -1,17 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_16.c                                       :+:      :+:    :+:   */
+/*   itoa_u.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 22:46:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/16 23:54:06 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/17 18:55:34 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libftprintf.h"
 
 static int	acc_u(unsigned long long int value, int base, t_data *data, int i)

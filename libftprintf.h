@@ -18,10 +18,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define TYPE "cspdiuxX%"
-# define FLAGS "-0# +"
-# define DIGIT "0123456789"
-
 typedef	struct		s_data
 {
 	va_list			va;
@@ -43,16 +39,16 @@ typedef	struct		s_data
 }					t_data;
 
 int					ft_printf(const char *s, ...);
-int					ft_s_parsing(const char *s, t_data *data);
-void				*ft_memset(void *str, int symbol, size_t n);
-void				ft_putstr_pf(t_data *data);
-size_t				ft_strlen(const char *s);
-char				*ft_strchr(const char *s, int c);
-void				ft_symb_arg(int symnol, t_data *data);
-void				ft_width_set(t_data *data, char symbol);
-void				*ft_memcpy(void *dest, const void *src, size_t n);
-void				ft_string_arg(char *string, t_data *data);
-int					ft_get_arg(t_data *data);
+int					parsing(const char *s, t_data *data);
+void				*ftp_memset(void *str, int symbol, size_t n);
+void				putstr_pf(t_data *data);
+size_t				ftp_strlen(const char *s);
+char				*ftp_strchr(const char *s, int c);
+void				symb_arg(int symnol, t_data *data);
+void				width_set(t_data *data, char symbol);
+void				*ftp_memcpy(void *dest, const void *src, size_t n);
+void				string_arg(char *string, t_data *data);
+int					get_arg(t_data *data);
 void				itoa_10(long long int value, t_data *data);
 void				itoa_u(unsigned long long int val, int base,
 					t_data *data, char *s);

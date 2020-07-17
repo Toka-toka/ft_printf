@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_parsing.c                                     :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 22:46:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/16 22:09:32 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/17 18:54:53 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libftprintf.h"
 
-int	ft_conversion_pars(const char *s, int i, t_data *data)
+static int	conversion_pars(const char *s, int i, t_data *data)
 {
 	if (s[i] == 'l')
 	{
@@ -40,7 +39,7 @@ int	ft_conversion_pars(const char *s, int i, t_data *data)
 	return (i);
 }
 
-int	ft_accuracy_pars(const char *s, int i, t_data *data)
+static int	accuracy_pars(const char *s, int i, t_data *data)
 {
 	data->accuracy = 0;
 	if (s[i] == '*')
@@ -50,7 +49,7 @@ int	ft_accuracy_pars(const char *s, int i, t_data *data)
 	}
 	else
 	{
-		while (ft_strchr("0123456789", s[i]) != 0)
+		while (ftp_strchr("0123456789", s[i]) != 0)
 		{
 			data->accuracy = data->accuracy * 10 + (s[i] - '0');
 			i++;
@@ -61,7 +60,7 @@ int	ft_accuracy_pars(const char *s, int i, t_data *data)
 	return (i);
 }
 
-int	ft_width_pars(const char *s, int i, t_data *data)
+static int	width_pars(const char *s, int i, t_data *data)
 {
 	if (s[i] == '*')
 	{
@@ -75,7 +74,7 @@ int	ft_width_pars(const char *s, int i, t_data *data)
 	}
 	else
 	{
-		while (ft_strchr("0123456789", s[i]) != 0)
+		while (ftp_strchr("0123456789", s[i]) != 0)
 		{
 			data->width = data->width * 10 + (s[i] - '0');
 			i++;
@@ -86,10 +85,10 @@ int	ft_width_pars(const char *s, int i, t_data *data)
 	return (i);
 }
 
-int	ft_flag_pars(const char *s, int i, t_data *data)
+static int	flag_pars(const char *s, int i, t_data *data)
 {
 	i = data->index;
-	while (ft_strchr("-0# +", s[i]) != 0)
+	while (ftp_strchr("-0# +", s[i]) != 0)
 	{
 		if (s[i] == '-')
 			data->minus = 1;
@@ -108,23 +107,23 @@ int	ft_flag_pars(const char *s, int i, t_data *data)
 	return (i);
 }
 
-int	ft_s_parsing(const char *s, t_data *data)
+int			parsing(const char *s, t_data *data)
 {
 	int i;
 
 	i = 0;
-	i = ft_flag_pars(s, i, data);
-	i = ft_width_pars(s, i, data);
+	i = flag_pars(s, i, data);
+	i = width_pars(s, i, data);
 	if (s[i] == '.')
 	{
 		i++;
-		i = ft_accuracy_pars(s, i, data);
+		i = accuracy_pars(s, i, data);
 	}
-	i = ft_conversion_pars(s, i, data);
-	if (ft_strchr("cspdiuxX%", s[i]) != 0)
+	i = conversion_pars(s, i, data);
+	if (ftp_strchr("cspdiuxX%", s[i]) != 0)
 	{
 		data->type = s[i];
-		if (ft_get_arg(data) == -1)
+		if (get_arg(data) == -1)
 			return (-1);
 		data->index = i + 1;
 	}

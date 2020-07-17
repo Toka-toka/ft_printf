@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_parsing.c                                     :+:      :+:    :+:   */
+/*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 22:46:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/16 23:21:20 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/17 18:55:51 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libftprintf.h"
 
 static void		conversion_u(t_data *data, int base, char *symbols)
@@ -51,18 +50,18 @@ static void		conversion_d(t_data *data)
 	itoa_10(value, data);
 }
 
-int				ft_get_arg(t_data *data)
+int				get_arg(t_data *data)
 {
 	if (data->type == '%')
 	{
 		if (data->accuracy == -1 && data->zero == 1)
 			data->zero_type = 1;
-		ft_symb_arg('%', data);
+		symb_arg('%', data);
 	}
 	if (data->type == 'c')
-		ft_symb_arg(va_arg(data->va, int), data);
+		symb_arg(va_arg(data->va, int), data);
 	if (data->type == 's')
-		ft_string_arg(va_arg(data->va, char*), data);
+		string_arg(va_arg(data->va, char*), data);
 	if (data->type == 'd' || data->type == 'i')
 		conversion_d(data);
 	if (data->type == 'u')
@@ -75,6 +74,6 @@ int				ft_get_arg(t_data *data)
 		itoa_u(va_arg(data->va, size_t), 16, data, "0123456789abcdefx");
 	if (data->error == 1)
 		return (-1);
-	ft_width_set(data, ' ');
+	width_set(data, ' ');
 	return (0);
 }

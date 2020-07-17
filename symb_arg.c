@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_symb_arg.c                                      :+:      :+:    :+:   */
+/*   symb_arg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 22:46:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/07/16 22:13:29 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/17 18:54:31 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-void	ft_width_set(t_data *data, char symbol)
+void	width_set(t_data *data, char symbol)
 {
 	int i;
 
@@ -30,7 +28,7 @@ void	ft_width_set(t_data *data, char symbol)
 			i--;
 		}
 	}
-	ft_putstr_pf(data);
+	putstr_pf(data);
 	free(data->arg);
 	if (i > 0)
 	{
@@ -43,7 +41,7 @@ void	ft_width_set(t_data *data, char symbol)
 	}
 }
 
-void	ft_string_arg(char *string, t_data *data)
+void	string_arg(char *string, t_data *data)
 {
 	if (string == NULL)
 	{
@@ -51,17 +49,17 @@ void	ft_string_arg(char *string, t_data *data)
 		string = "(null)";
 	}
 	else
-		data->arg_len = ft_strlen(string);
+		data->arg_len = ftp_strlen(string);
 	if (data->accuracy != -1 && data->accuracy < data->arg_len)
 		data->arg_len = data->accuracy;
 	data->arg = malloc((data->arg_len + 1) * sizeof(char));
 	if (data->arg == NULL)
 		data->error = 1;
 	else
-		ft_memcpy(data->arg, string, data->arg_len);
+		ftp_memcpy(data->arg, string, data->arg_len);
 }
 
-void	ft_symb_arg(int symbol, t_data *data)
+void	symb_arg(int symbol, t_data *data)
 {
 	data->arg = malloc(2 * sizeof(char));
 	if (data->arg == NULL)

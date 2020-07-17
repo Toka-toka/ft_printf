@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ftp_memset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:13:04 by sedric            #+#    #+#             */
-/*   Updated: 2020/05/25 20:47:51 by sedric           ###   ########.fr       */
+/*   Updated: 2020/07/17 18:56:49 by sedric           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ftp_memset(void *s, int c, size_t n)
 {
-	unsigned char *dest_point;
-	unsigned char *src_point;
+	unsigned char	*str_point;
+	unsigned char	symbol;
 
-	dest_point = (unsigned char*)dest;
-	src_point = (unsigned char*)src;
-	if (dest_point == NULL && src_point == NULL)
-		return (dest);
+	str_point = (unsigned char*)s;
+	symbol = c;
 	while (n > 0)
 	{
-		*dest_point++ = *src_point++;
+		*str_point++ = symbol;
 		n--;
 	}
-	return (dest);
+	return (s);
 }

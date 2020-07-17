@@ -16,7 +16,17 @@ NAME = libftprintf.a
 
 HEADER = libftprintf.h
 
-SRC = 	*.c
+SRC =	ft_printf.c\
+		parsing.c\
+		get_arg.c\
+		symb_arg.c\
+		itoa_10.c\
+		itoa_u.c\
+		putstr_pf.c\
+		ftp_memcpy.c\
+		ftp_memset.c\
+		ftp_strchr.c\
+		ftp_strlen.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -33,11 +43,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) $(NAME:.a=.so)
-
-so:
-	gcc -fPIC -c $(SRC)
-	gcc -shared -o libft.so $(OBJ)
+	rm -f $(NAME)
 
 re: fclean all
 
